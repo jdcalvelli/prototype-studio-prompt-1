@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://p25im8hfhhsi"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_0qq5n"]
+[ext_resource type="Texture2D" uid="uid://ckuae2olvak1q" path="res://assets/pixel guy-Sheet.png" id="1_sq6o4"]
+[ext_resource type="AudioStream" uid="uid://c4v55ln2llcmm" path="res://audio/501102__evretro__8-bit-footsteps.wav" id="3_n518y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7cl65"]
+size = Vector2(8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2p3t"]
+atlas = ExtResource("1_sq6o4")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76mph"]
+atlas = ExtResource("1_sq6o4")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7huih"]
+atlas = ExtResource("1_sq6o4")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ld6xl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2p3t")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76mph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7huih")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_0qq5n")
+moveSpeed = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7cl65")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ld6xl")
+animation = &"idle"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_n518y")
+pitch_scale = 2.0
+autoplay = true

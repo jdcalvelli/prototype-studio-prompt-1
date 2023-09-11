@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://v2uonlgmy86y"]
+
+[ext_resource type="PackedScene" uid="uid://p25im8hfhhsi" path="res://prefabs/Player.tscn" id="1_6veik"]
+[ext_resource type="PackedScene" uid="uid://do7awfm4f1t13" path="res://prefabs/edge_blocker.tscn" id="2_4du3d"]
+[ext_resource type="PackedScene" uid="uid://b46ct13k6n1ud" path="res://prefabs/next_scene_trigger.tscn" id="3_dcfqs"]
+[ext_resource type="Texture2D" uid="uid://b23ehwo7p1qwn" path="res://assets/white square.png" id="4_0emim"]
+[ext_resource type="PackedScene" uid="uid://d3q0yuomxy88e" path="res://prefabs/Umbrella.tscn" id="5_mfrv4"]
+[ext_resource type="PackedScene" uid="uid://belol1sfdedg2" path="res://prefabs/Rain.tscn" id="6_esffb"]
+
+[node name="rain_scene" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Rain" parent="." instance=ExtResource("6_esffb")]
+position = Vector2(500, -400)
+
+[node name="Umbrella" parent="." instance=ExtResource("5_mfrv4")]
+position = Vector2(2.08165e-12, 32)
+
+[node name="Player" parent="." instance=ExtResource("1_6veik")]
+texture_filter = 1
+position = Vector2(-628, 152)
+scale = Vector2(10, 10)
+
+[node name="Floor" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 352)
+scale = Vector2(80, 20)
+texture = ExtResource("4_0emim")
+
+[node name="EdgeBlocker" parent="." instance=ExtResource("2_4du3d")]
+position = Vector2(725, 140)
+
+[node name="NextSceneTrigger" parent="." instance=ExtResource("3_dcfqs")]
+position = Vector2(-725, 140)
+nextScene = "res://scenes/intro_scene.tscn"
+desiredPlayerSide = 1

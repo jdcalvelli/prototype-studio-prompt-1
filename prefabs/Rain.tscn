@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://belol1sfdedg2"]
+
+[ext_resource type="Script" path="res://scripts/Rain.gd" id="1_5wr74"]
+[ext_resource type="AudioStream" uid="uid://qqvd8vgrrief" path="res://audio/527664__straget__thunder.wav" id="2_8ani4"]
+[ext_resource type="AudioStream" uid="uid://bd7s3lswx2icb" path="res://audio/531947__straget__the-rain-falls-against-the-parasol.wav" id="3_qr84j"]
+
+[node name="Rain" type="Node2D"]
+script = ExtResource("1_5wr74")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+visible = false
+amount = 500
+lifetime = 2.0
+fixed_fps = 60
+emission_shape = 3
+emission_rect_extents = Vector2(900, 2.08165e-12)
+direction = Vector2(-1, 2.08165e-12)
+initial_velocity_min = 1000.0
+initial_velocity_max = 1000.0
+scale_amount_max = 5.0
+
+[node name="ThunderAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_8ani4")
+autoplay = true
+
+[node name="RainAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qr84j")
+autoplay = true
